@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import {
   Image,
   Platform,
@@ -10,7 +10,9 @@ import {
 } from 'react-native';
 import { WebBrowser } from 'expo';
 
-import { MonoText } from '../components/StyledText';
+// import { MonoText } from '../components/StyledText';
+
+import { Movements } from '../components/movements'
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -20,6 +22,8 @@ export default class HomeScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+        {/* <MonoText /> */}
+        <Movements />
       </View>
     );
   }
