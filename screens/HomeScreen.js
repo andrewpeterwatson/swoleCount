@@ -13,6 +13,7 @@ import { WebBrowser } from 'expo';
 // import { MonoText } from '../components/StyledText';
 
 import { Movements } from '../components/movements'
+import AddRound from '../components/AddRound'
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -23,7 +24,9 @@ export default class HomeScreen extends React.Component {
     return (
       <View style={styles.container}>
         {/* <MonoText /> */}
+        <View style={{flex: .5}}></View>
         <Movements />
+        <AddRound />
       </View>
     );
   }
@@ -65,6 +68,7 @@ export default class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    display: 'flex',
     backgroundColor: '#fff',
   },
   developmentModeText: {
