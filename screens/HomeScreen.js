@@ -10,9 +10,9 @@ import {
 } from 'react-native';
 import { WebBrowser } from 'expo';
 
-// import { MonoText } from '../components/StyledText';
+import { Movements } from '../components/movements';
+import { Timer } from '../components/timer';
 
-import { Movements } from '../components/movements'
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -23,7 +23,8 @@ export default class HomeScreen extends React.Component {
     return (
       <View style={styles.container}>
         {/* <MonoText /> */}
-        <Movements />
+        <Timer />
+        {/* <Movements /> */}
       </View>
     );
   }
