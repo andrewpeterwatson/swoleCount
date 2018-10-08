@@ -7,33 +7,32 @@ import {
     TouchableOpacity,
 } from 'react-native'
 
-interface IProps {}
+interface IProps {
+    round: number,
+    _handleFinishPress: any,
+    _handleUpdateRound: any
+}
 
 interface IState {
-    currentRound: number
+    round: number,
 }
 
 class AddRound extends React.Component<IProps, IState> {
 
-    state: IState = {
-        currentRound: 0,
-    }
-
-    _finishWorkout = () => this.setState({ currentRound: 0 })
-
     render() { 
-        const { currentRound } = this.state
+        // const { currentRound } = this.state
+        const { round, _handleFinishPress, _handleUpdateRound } = this.props
         return (
             <View style={styles.container}>
                 <TouchableOpacity 
                 style={styles.swoleBtn}
-                onPress={() => this.setState({ currentRound: this.state.currentRound + 1})}
+                onPress={() => _handleUpdateRound()}
                 >
                     <Text style={{ color: '#fff', fontSize: 30, textAlign: 'center' }}>
-                        {currentRound === 0 ? 'GET SWOLE' : currentRound}
+                        {round === 0 ? 'GET SWOLE' : round}
                     </Text>
                 </TouchableOpacity>
-                <Button title='finish workout' onPress={() => this._finishWorkout()}>
+                <Button title='finish workout' onPress={() => _handleFinishPress()}>
                 </Button>
             </View>
         )

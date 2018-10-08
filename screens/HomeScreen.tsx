@@ -19,6 +19,7 @@ interface IProps {}
 interface IProps {}
 interface IState {
     movementList: any;
+    round: number
 }
 
 export default class HomeScreen extends React.Component<IProps, IState> {
@@ -27,7 +28,8 @@ export default class HomeScreen extends React.Component<IProps, IState> {
   };
 
   state: IState = {
-    movementList: []
+    movementList: [],
+    round: 0,
   }
 
   _addMovement = (movement: string, reps: number) => this.setState({ 
@@ -38,8 +40,10 @@ export default class HomeScreen extends React.Component<IProps, IState> {
       ],
   })
 
-  _handleFinishPress = (rounds: number) => {
-    console.log('ROUNDS AND REPS', rounds, this.state.movementList)
+  _handleUpdateRound = () => this.setState({ round: this.state.round + 1 })
+
+  _handleFinishPress = () => {
+    console.log('ROUNDS AND REPS', this.state.round, this.state.movementList)
   }
 
   public render() {
@@ -50,7 +54,11 @@ export default class HomeScreen extends React.Component<IProps, IState> {
           movementList={this.state.movementList}
           _addMovement={this._addMovement}
         />
-        <AddRound />
+        <AddRound
+          round={this.state.round}
+          _handleUpdateRound={this._handleUpdateRound}
+          _handleFinishPress={this._handleFinishPress}
+        />
       </View>
     );
   }
