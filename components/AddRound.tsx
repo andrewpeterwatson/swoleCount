@@ -33,7 +33,7 @@ class AddRound extends React.Component<IProps, IState> {
                         {currentRound === 0 ? 'GET SWOLE' : currentRound}
                     </Text>
                 </TouchableOpacity>
-                <Button style={{ margin: 10 }} title='finish workout' onPress={() => this._finishWorkout()}>
+                <Button title='finish workout' onPress={() => this._finishWorkout()}>
                 </Button>
             </View>
         )

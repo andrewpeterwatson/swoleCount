@@ -10,14 +10,10 @@ import {
 } from 'react-native';
 import { WebBrowser } from 'expo';
 
-import { Movements } from '../components/movements';
 import { Timer } from '../components/timer';
 
-<<<<<<< HEAD
 import { Movements } from '../components/movements'
 import AddRound from '../components/AddRound'
-=======
->>>>>>> a8a26d61d561654f4c6d5246a8d76a63b0782460
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -27,15 +23,9 @@ export default class HomeScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        {/* <MonoText /> */}
-<<<<<<< HEAD
-        <View style={{flex: .5}}></View>
+        <Timer />
         <Movements />
         <AddRound />
-=======
-        <Timer />
-        {/* <Movements /> */}
->>>>>>> a8a26d61d561654f4c6d5246a8d76a63b0782460
       </View>
     );
   }
