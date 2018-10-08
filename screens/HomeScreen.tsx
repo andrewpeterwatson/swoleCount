@@ -16,8 +16,9 @@ import { Movements } from '../components/movements'
 import AddRound from '../components/AddRound'
 
 interface IProps {}
+interface IState {}
 
-export default class HomeScreen extends React.Component<IProps> {
+export default class HomeScreen extends React.Component<IProps, IState> {
   public static navigationOptions = {
     header: null,
   };

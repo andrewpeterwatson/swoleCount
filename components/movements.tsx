@@ -49,7 +49,11 @@ export class Movements extends React.Component<IProps, IState> {
                 />
                 <ScrollView>
                     { movementList.map( (movement: any) => 
-                        <MovementItem key={movement.movement} reps={movement.reps} name={movement.movement}/>
+                        <MovementItem 
+                            key={movement.movement} 
+                            reps={movement.reps} 
+                            name={movement.movement}
+                        />
                     )}
                 </ScrollView>
             </View>
