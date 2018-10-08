@@ -4,7 +4,7 @@ import {
     View,
     ScrollView,
 } from 'react-native'
-import MovementItem from './movmentItem'
+import MovementItem from './movementItem'
 import AddMovement from './addMovement';
 
 interface IProps {}
