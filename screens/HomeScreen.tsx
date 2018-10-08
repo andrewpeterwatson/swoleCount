@@ -16,18 +16,50 @@ import { Movements } from '../components/movements'
 import AddRound from '../components/AddRound'
 
 interface IProps {}
-interface IState {}
+interface IProps {}
+interface IState {
+    movement: string,
+    reps: number,
+    movementList: any;
+}
 
 export default class HomeScreen extends React.Component<IProps, IState> {
   public static navigationOptions = {
     header: null,
   };
 
+  state: IState = {
+    movement: '',
+    reps: 0,
+    movementList: []
+  }
+
+  _addMovement = () => this.setState({ 
+      movementList:  
+      [ 
+          {movement: this.state.movement, reps: this.state.reps}, 
+          ...this.state.movementList 
+      ],
+      movement: '',
+      reps: 0,
+  })
+
+  _updateMovement = (movement: string) => this.setState({ movement })
+
+  _updateReps = (reps: number) => this.setState({ reps })
+
   public render() {
     return (
       <View style={styles.container}>
-        <Timer />
-        <Movements />
+        {/* <Timer /> */}
+        <Movements 
+          movement={this.state.movement}
+          reps={this.state.reps}
+          movementList={this.state.movementList}
+          _addMovement={this._addMovement}
+          _updateMovement={this._updateMovement}
+          _updateReps={this._updateReps}
+        />
         <AddRound />
       </View>
     );

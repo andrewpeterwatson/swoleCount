@@ -7,45 +7,28 @@ import {
 import MovementItem from './movementItem'
 import AddMovement from './addMovement';
 
-interface IProps {}
-interface IState {
+interface IProps {
     movement: string,
     reps: number,
-    movementList: any;
+    movementList: Array<object>, 
+    _addMovement: any,
+    _updateMovement: any,
+    _updateReps: any,
 }
+interface IState {}
 
 export class Movements extends React.Component<IProps, IState> {
 
-    state: IState = {
-        movement: '',
-        reps: 0,
-        movementList: []
-    }
-
-    _addMovement = () => this.setState({ 
-        movementList:  
-        [ 
-            {movement: this.state.movement, reps: this.state.reps}, 
-            ...this.state.movementList 
-        ],
-        movement: '',
-        reps: 0,
-    })
-
-    _updateMovement = (movement: string) => this.setState({ movement })
-
-    _updateReps = (reps: number) => this.setState({ reps })
-
     render() {
-        const { movementList } = this.state
+        const { movement, reps, movementList, _addMovement, _updateMovement, _updateReps } = this.props
         return (
             <View style={{flex: 1}}>
                 <AddMovement 
-                    movement={this.state.movement}
-                    reps={this.state.reps}
-                    onSubmit={this._addMovement} 
-                    _updateReps={this._updateReps}
-                    _updateMovement={this._updateMovement}
+                    movement={movement}
+                    reps={reps}
+                    onSubmit={_addMovement} 
+                    _updateReps={_updateReps}
+                    _updateMovement={_updateMovement}
                 />
                 <ScrollView>
                     { movementList.map( (movement: any) => 
