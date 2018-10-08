@@ -18,8 +18,6 @@ import AddRound from '../components/AddRound'
 interface IProps {}
 interface IProps {}
 interface IState {
-    movement: string,
-    reps: number,
     movementList: any;
 }
 
@@ -29,36 +27,28 @@ export default class HomeScreen extends React.Component<IProps, IState> {
   };
 
   state: IState = {
-    movement: '',
-    reps: 0,
     movementList: []
   }
 
-  _addMovement = () => this.setState({ 
+  _addMovement = (movement: string, reps: number) => this.setState({ 
       movementList:  
       [ 
-          {movement: this.state.movement, reps: this.state.reps}, 
+          { movement, reps }, 
           ...this.state.movementList 
       ],
-      movement: '',
-      reps: 0,
   })
 
-  _updateMovement = (movement: string) => this.setState({ movement })
-
-  _updateReps = (reps: number) => this.setState({ reps })
+  _handleFinishPress = (rounds: number) => {
+    console.log('ROUNDS AND REPS', rounds, this.state.movementList)
+  }
 
   public render() {
     return (
       <View style={styles.container}>
         {/* <Timer /> */}
         <Movements 
-          movement={this.state.movement}
-          reps={this.state.reps}
           movementList={this.state.movementList}
           _addMovement={this._addMovement}
-          _updateMovement={this._updateMovement}
-          _updateReps={this._updateReps}
         />
         <AddRound />
       </View>
