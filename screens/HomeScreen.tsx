@@ -15,14 +15,18 @@ import { Timer } from '../components/timer';
 import { Movements } from '../components/movements'
 import AddRound from '../components/AddRound'
 
-interface IProps {}
-interface IProps {}
+interface IProps {
+  navigation: any
+}
 interface IState {
     movementList: any;
     round: number
 }
 
 export default class HomeScreen extends React.Component<IProps, IState> {
+  constructor(props: any) {
+    super(props)
+  }
   public static navigationOptions = {
     header: null,
   };
@@ -44,9 +48,14 @@ export default class HomeScreen extends React.Component<IProps, IState> {
 
   _handleFinishPress = () => {
     console.log('ROUNDS AND REPS', this.state.round, this.state.movementList)
+    this.props.navigation.navigate('Results', {
+      round: this.state.round,
+      movementList: this.state.movementList,
+    })
   }
 
   public render() {
+    console.log('navigation', this.props)
     return (
       <View style={styles.container}>
         {/* <Timer /> */}
