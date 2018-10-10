@@ -53,15 +53,15 @@ const styles = StyleSheet.create({
         marginRight: 10,
         width: 50,
         height: 50,
-        borderRadius: 25,
+        // borderRadius: 25,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'orange'
+        // backgroundColor: 'orange'
     },
     btnText: {
         fontSize: 30,
-        color: 'white'
+        color: 'orange'
     }
 })
 

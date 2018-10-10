@@ -3,11 +3,13 @@ import {
     Text,
     View,
     ScrollView,
+    StyleSheet,
     TouchableOpacity,
 } from 'react-native'
 import MovementItem from './movementItem'
 import AddMovement from './addMovement';
 import Collapsible from 'react-native-collapsible'
+import TextCollapsible from './TextCollapsible'
 
 interface IProps {
     movementList: Array<object>, 
@@ -41,7 +43,12 @@ export class Movements extends React.Component<IProps, IState> {
         console.log('isCollapsed', this.state.isCollapsed)
         return (
             <View style={{ flex: 1}}>
-                <TouchableOpacity style={{ width: '100%', height: 30, backgroundColor: 'red'}} onPress={() => this.setState({ isCollapsed: (!this.state.isCollapsed ? true : false) })}>
+                <TouchableOpacity 
+                    style={[styles.drawerContainer, this.state.isCollapsed && styles.bottomLine]} 
+                    onPress={() => this.setState({ isCollapsed: (!this.state.isCollapsed ? true : false) })}
+                >
+                    <TextCollapsible left={10}>Movements</TextCollapsible>
+                    <TextCollapsible right={10}>{this.state.isCollapsed ? '+' : '-'}</TextCollapsible>
                 </TouchableOpacity>
                 <Collapsible collapsed={this.state.isCollapsed}>
                     <AddMovement 
@@ -65,3 +72,25 @@ export class Movements extends React.Component<IProps, IState> {
         )
     }
 }
+
+const styles = StyleSheet.create({
+    drawerContainer: {
+        width: '100%', 
+        height: 50, 
+        display: 'flex', 
+        flexDirection: 'row', 
+        alignItems: 'center', 
+        justifyContent: 'space-between',
+        borderStyle: 'solid',
+        borderBottomColor: 'grey',
+        borderBottomWidth: 1,
+        borderStyle: 'solid',
+        borderBottomColor: 'grey',
+        borderBottomWidth: 0,
+    },
+    bottomLine: {
+        borderStyle: 'solid',
+        borderBottomColor: 'grey',
+        borderBottomWidth: 1,
+    }
+})
