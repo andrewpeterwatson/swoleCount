@@ -23,6 +23,7 @@ class MovementItem extends React.Component<IProps, IState> {
 
     render() {
         const { name, reps } = this.props
+        console.log('reps from item', reps)
         return (
         <View style={styles.container}>
             <Text style={{ fontSize: 20, marginLeft: 10 }}>{name}</Text>
@@ -53,11 +54,9 @@ const styles = StyleSheet.create({
         marginRight: 10,
         width: 50,
         height: 50,
-        // borderRadius: 25,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        // backgroundColor: 'orange'
     },
     btnText: {
         fontSize: 30,
