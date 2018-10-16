@@ -13,6 +13,7 @@ import { WebBrowser } from 'expo';
 import { Timer } from '../components/timer';
 
 import { Movements } from '../components/movements'
+import { Splits } from '../components/splits'
 import AddRound from '../components/AddRound'
 
 interface IProps {
@@ -33,7 +34,8 @@ export default class HomeScreen extends React.Component<IProps, IState> {
 
   state: IState = {
     movementList: [],
-    round: 0,
+    currentTime: 0,
+    rounds: [],
   }
 
   _addMovement = (movement: string, reps: number) => this.setState({ 
@@ -44,18 +46,32 @@ export default class HomeScreen extends React.Component<IProps, IState> {
       ],
   })
 
-  _handleUpdateRound = () => this.setState({ round: this.state.round + 1 })
+  _handleUpdateRound = () => {
+    let newTime = this.state.currentTime + 1.23
+    let rounds = this.state.rounds
+    const newRound =  {
+      round: this.state.rounds.length + 1, 
+      time: newTime,
+    }
+    rounds.unshift(newRound)
+    this.setState({ 
+      rounds,
+      currentTime: newTime
+    })
+  }
 
   _handleFinishPress = () => {
     console.log('ROUNDS AND REPS', this.state.round, this.state.movementList)
     this.props.navigation.navigate('Results', {
+      time: newTime,
       round: this.state.round,
       movementList: this.state.movementList,
     })
+    this.setState({ currentTime: newTime })
   }
 
   public render() {
-    console.log('navigation', this.props)
+    console.log('rounds', this.state.rounds )
     return (
       <View style={styles.container}>
         {/* <Timer /> */}
@@ -63,8 +79,11 @@ export default class HomeScreen extends React.Component<IProps, IState> {
           movementList={this.state.movementList}
           _addMovement={this._addMovement}
         />
+        <Splits 
+          currentTime={4.3}
+        />
         <AddRound
-          round={this.state.round}
+          rounds={this.state.rounds}
           _handleUpdateRound={this._handleUpdateRound}
           _handleFinishPress={this._handleFinishPress}
         />

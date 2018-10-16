@@ -21,7 +21,8 @@ class AddRound extends React.Component<IProps, IState> {
 
     render() { 
         // const { currentRound } = this.state
-        const { round, _handleFinishPress, _handleUpdateRound } = this.props
+        const { rounds, _handleFinishPress, _handleUpdateRound } = this.props
+        console.log('rounds from add', rounds)
         return (
             <View style={styles.container}>
                 <TouchableOpacity 
@@ -29,7 +30,7 @@ class AddRound extends React.Component<IProps, IState> {
                 onPress={() => _handleUpdateRound()}
                 >
                     <Text style={{ color: '#fff', fontSize: 30, textAlign: 'center' }}>
-                        {round === 0 ? 'GET SWOLE' : round}
+                        {rounds.length === 0 ? 'GET SWOLE' : rounds[0].round}
                     </Text>
                 </TouchableOpacity>
                 <Button title='finish workout' onPress={() => _handleFinishPress()}>

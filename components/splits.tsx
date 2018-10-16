@@ -12,20 +12,19 @@ import Collapsible from 'react-native-collapsible'
 import TextCollapsible from './TextCollapsible'
 
 interface IProps {
-    movementList: Array<object>, 
-    _addMovement: any,
+    currentTime: number,
 }
 interface IState {
-    movement: string,
-    reps: number,
+    currentTime: number,
+    prevSplit: number, 
 }
 
-export class Movements extends React.Component<IProps, IState> {
+export class Splits extends React.Component<IProps, IState> {
 
     state: IState = {
-        movement: '',
-        reps: 0,
-        isCollapsed: false,
+        currentTime: this.props.currentTime,
+        prevSplit: 0, 
+        isCollapsed: false, 
     }
 
     _handleAddMovement = (movement: string, reps: number) => {
@@ -42,23 +41,23 @@ export class Movements extends React.Component<IProps, IState> {
         const { movementList, _addMovement } = this.props
         console.log('isCollapsed', this.state.isCollapsed)
         return (
-            <View style={{ width: '100%', height: 'auto' }}>
+            <View style={{ flex: 1}}>
                 <TouchableOpacity 
                     style={[styles.drawerContainer, this.state.isCollapsed && styles.bottomLine]} 
                     onPress={() => this.setState({ isCollapsed: (!this.state.isCollapsed ? true : false) })}
                 >
-                    <TextCollapsible left={10}>Movements</TextCollapsible>
+                    <TextCollapsible left={10}>Splits</TextCollapsible>
                     <TextCollapsible right={10}>{this.state.isCollapsed ? '+' : '-'}</TextCollapsible>
                 </TouchableOpacity>
                 <Collapsible collapsed={this.state.isCollapsed}>
-                    <AddMovement 
+                    {/* <AddMovement 
                         movement={movement}
                         reps={reps}
                         onSubmit={() => this._handleAddMovement(this.state.movement, this.state.reps)} 
                         _updateReps={this._updateReps}
                         _updateMovement={this._updateMovement}
-                    />
-                    <ScrollView>
+                    /> */}
+                    {/* <ScrollView>
                         { movementList.map( (movement: any) => 
                             <MovementItem 
                                 key={movement.movement} 
@@ -66,7 +65,7 @@ export class Movements extends React.Component<IProps, IState> {
                                 name={movement.movement}
                             />
                         )}
-                    </ScrollView>
+                    </ScrollView> */}
                 </Collapsible>
             </View>
         )
