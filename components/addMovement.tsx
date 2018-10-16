@@ -41,7 +41,7 @@ class AddMovement extends React.Component <IProps> {
                     value={reps.toString() === '0' ? '' : reps.toString()}
                     clearButtonMode={'always'}
                     returnKeyType='done'
-                    onChangeText={text => _updateReps(parseInt(text))}
+                    onChangeText={text => _updateReps(text ? parseInt(text) : '')}
                  />
                 <TouchableOpacity 
                 onPress={() => onSubmit()}
