@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ScrollView, StyleSheet, Text } from 'react-native';
+import { ScrollView, StyleSheet, View, Text } from 'react-native';
 
 interface IProps {
   navigation: any,
@@ -15,8 +15,14 @@ export default class ResultsScreen extends React.Component<IProps, IState> {
     const { navigation } = this.props
     return (
       <ScrollView style={styles.container}>
-        <Text>Results</Text>
         <Text>Rounds {navigation.getParam('round')}</Text>
+        <Text>Results</Text>
+        {navigation.getParam('movementList').map(movement => 
+          <View>
+            <Text>{movement.movement}X{movement.reps}</Text>
+            <Text>{movement.reps * navigation.getParam('round')}</Text>
+          </View>
+        )}
         <Text>.....</Text>
         {console.log('MOVEMENTLIST', navigation.getParam('movementList'))}
       </ScrollView>
