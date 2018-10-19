@@ -86,15 +86,20 @@ export default class HomeScreen extends React.Component<IProps, IState> {
     return (
       <View style={styles.container}>
         {/* <Timer /> */}
-        <Movements 
-          movementList={this.state.movementList}
-          _addMovement={this._addMovement}
-        />
-        <Splits 
-          pace={this.state.pace}
-          currentTime={this.state.currentTime}
-          rounds={this.state.rounds}
-        />
+        <View style={{ flex: .5 }} />
+        <View style={styles.scrollStyle}>
+          <ScrollView>
+            <Movements 
+              movementList={this.state.movementList}
+              _addMovement={this._addMovement}
+            />
+            <Splits 
+              pace={this.state.pace}
+              currentTime={this.state.currentTime}
+              rounds={this.state.rounds}
+            />
+          </ScrollView>
+        </View>
         <AddRound
           rounds={this.state.rounds}
           _handleUpdateRound={this._handleUpdateRound}
@@ -143,6 +148,9 @@ const styles = StyleSheet.create({
     flex: 1,
     display: 'flex',
     backgroundColor: '#fff',
+  },
+  scrollStyle: {
+    flex: 1, 
   },
   developmentModeText: {
     marginBottom: 20,

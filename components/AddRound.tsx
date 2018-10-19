@@ -8,9 +8,13 @@ import {
 } from 'react-native'
 
 interface IProps {
-    round: number,
+    rounds: Array<Object>,
     _handleFinishPress: any,
-    _handleUpdateRound: any
+    _handleUpdateRound: any,
+}
+
+interface rounds {
+    round: number
 }
 
 interface IState {
@@ -50,6 +54,7 @@ const styles = StyleSheet.create({
     swoleBtn: {
         width: 150,
         height: 150,
+        marginTop: 20,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
