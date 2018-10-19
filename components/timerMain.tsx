@@ -79,15 +79,17 @@ export class TimerMain extends React.Component<IProps, IState>{
   public _stopTimer = () => {
     clearInterval(this.state.interval);
 
+    console.log("now", this.state.now)
+    console.log("start", this.state.startTime)
+    this.props._handleCurrentTime( this.props.currentTime + (this.state.now - this.state.startTime))
+
     this.setState({ 
       running: false,
       interval: null, 
       startTime: 0,
       now: 0,
     });
-    console.log("now", this.state.now)
-    console.log("start", this.state.startTime)
-    this.props._handleCurrentTime(this.state.now - this.state.startTime)
+    
   }
  
   public _resetTimer = () => {
