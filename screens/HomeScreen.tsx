@@ -21,7 +21,9 @@ interface IProps {
 }
 interface IState {
     movementList: any;
-    round: number
+    currentTime: number;
+    pace: number;
+    rounds: Array<Object>
 }
 
 export default class HomeScreen extends React.Component<IProps, IState> {
@@ -36,6 +38,7 @@ export default class HomeScreen extends React.Component<IProps, IState> {
     movementList: [],
     currentTime: 0,
     rounds: [],
+    pace: 0,
   }
 
   _addMovement = (movement: string, reps: number) => this.setState({ 
@@ -54,20 +57,28 @@ export default class HomeScreen extends React.Component<IProps, IState> {
       time: newTime,
     }
     rounds.unshift(newRound)
+    this._getPace(rounds, newTime)
     this.setState({ 
       rounds,
       currentTime: newTime
     })
   }
 
+
+  _getPace = (rounds: Array<Object>, currentTime: number) => {
+    const pace = currentTime / rounds.length
+    this.setState({ pace })
+    console.log('PACECCEEE', pace, currentTime, rounds.length)
+}
+
   _handleFinishPress = () => {
-    console.log('ROUNDS AND REPS', this.state.round, this.state.movementList)
+    console.log('ROUNDS AND REPS', this.state.rounds, this.state.movementList)
     this.props.navigation.navigate('Results', {
-      time: newTime,
-      round: this.state.round,
+      time: this.state.currentTime,
+      rounds: this.state.rounds,
       movementList: this.state.movementList,
     })
-    this.setState({ currentTime: newTime })
+    // this.setState({ currentTime: newTime })
   }
 
   public render() {
@@ -80,7 +91,9 @@ export default class HomeScreen extends React.Component<IProps, IState> {
           _addMovement={this._addMovement}
         />
         <Splits 
-          currentTime={4.3}
+          pace={this.state.pace}
+          currentTime={this.state.currentTime}
+          rounds={this.state.rounds}
         />
         <AddRound
           rounds={this.state.rounds}

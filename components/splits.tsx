@@ -10,13 +10,18 @@ import MovementItem from './movementItem'
 import AddMovement from './addMovement';
 import Collapsible from 'react-native-collapsible'
 import TextCollapsible from './TextCollapsible'
+import SplitPace from './splitPace'
+import SplitLap from './splitLap'
 
 interface IProps {
     currentTime: number,
+    rounds: Array<Object>,
+    pace: number,
 }
 interface IState {
     currentTime: number,
     prevSplit: number, 
+    isCollapsed: boolean, 
 }
 
 export class Splits extends React.Component<IProps, IState> {
@@ -27,18 +32,11 @@ export class Splits extends React.Component<IProps, IState> {
         isCollapsed: false, 
     }
 
-    _handleAddMovement = (movement: string, reps: number) => {
-        this.setState({ movement: '', reps: 0, })
-        this.props._addMovement(movement, reps)
-    }
+ 
 
-    _updateMovement = (movement: string) => this.setState({ movement })
-
-    _updateReps = (reps: number) => this.setState({ reps })
 
     render() {
-        const { movement, reps } = this.state
-        const { movementList, _addMovement } = this.props
+        const { pace, currentTime, rounds } = this.props
         console.log('isCollapsed', this.state.isCollapsed)
         return (
             <View style={{ flex: 1}}>
@@ -49,23 +47,9 @@ export class Splits extends React.Component<IProps, IState> {
                     <TextCollapsible left={10}>Splits</TextCollapsible>
                     <TextCollapsible right={10}>{this.state.isCollapsed ? '+' : '-'}</TextCollapsible>
                 </TouchableOpacity>
-                <Collapsible collapsed={this.state.isCollapsed}>
-                    {/* <AddMovement 
-                        movement={movement}
-                        reps={reps}
-                        onSubmit={() => this._handleAddMovement(this.state.movement, this.state.reps)} 
-                        _updateReps={this._updateReps}
-                        _updateMovement={this._updateMovement}
-                    /> */}
-                    {/* <ScrollView>
-                        { movementList.map( (movement: any) => 
-                            <MovementItem 
-                                key={movement.movement} 
-                                reps={movement.reps} 
-                                name={movement.movement}
-                            />
-                        )}
-                    </ScrollView> */}
+                <Collapsible style={styles.collapsibleStyle} collapsed={this.state.isCollapsed}>
+                    <SplitPace pace={pace} rounds={rounds} currentTime={currentTime} />
+                    <SplitLap pace={pace} rounds={rounds} currentTime={currentTime} />
                 </Collapsible>
             </View>
         )
@@ -91,5 +75,10 @@ const styles = StyleSheet.create({
         borderStyle: 'solid',
         borderBottomColor: 'grey',
         borderBottomWidth: 1,
+    },
+    collapsibleStyle: {
+        borderBottomWidth: 1,
+        borderBottomColor: 'darkgrey',
+        borderStyle: 'solid',
     }
 })
