@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { WebBrowser } from 'expo';
 
-import { Timer } from '../components/timer';
+import { TimerMain } from '../components/timerMain';
 
 import { Movements } from '../components/movements'
 import AddRound from '../components/AddRound'
@@ -19,8 +19,9 @@ interface IProps {
   navigation: any
 }
 interface IState {
-    movementList: any;
-    round: number
+  currentTime: any,
+  movementList: any,
+  round: number
 }
 
 export default class HomeScreen extends React.Component<IProps, IState> {
@@ -34,6 +35,7 @@ export default class HomeScreen extends React.Component<IProps, IState> {
   state: IState = {
     movementList: [],
     round: 0,
+    currentTime: 0,
   }
 
   _addMovement = (movement: string, reps: number) => this.setState({ 
@@ -58,7 +60,10 @@ export default class HomeScreen extends React.Component<IProps, IState> {
     console.log('navigation', this.props)
     return (
       <View style={styles.container}>
-        {/* <Timer /> */}
+        <TimerMain 
+          currentTime={this.state.currentTime}
+          _handleCurrentTime={this._handleCurrentTime}
+        />
         <Movements 
           movementList={this.state.movementList}
           _addMovement={this._addMovement}
@@ -103,6 +108,12 @@ export default class HomeScreen extends React.Component<IProps, IState> {
     WebBrowser.openBrowserAsync(
       'https://docs.expo.io/versions/latest/guides/up-and-running.html#can-t-see-your-changes'
     );
+  };
+
+  public _handleCurrentTime = (currentTime: any) =>{
+    this.setState({
+      currentTime
+    })
   };
 }
 

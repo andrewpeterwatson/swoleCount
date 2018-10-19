@@ -1,59 +1,36 @@
 import * as React from 'react';
 import { TouchableOpacity, Text, View, StyleSheet } from 'react-native';
-import { render } from 'react-dom';
+import moment from 'moment';
 
 interface IState {
-  currentTime: number,
+ 
+}
+
+interface IProps {
   interval: any
 }
 
-export class Timer extends React.Component<null, IState>{
-  public state: IState = {
-    currentTime: 0,
-    interval: null
-  }
-
-  public render(){
-    console.log(this.state.currentTime)
+export class Timer extends React.Component<IProps, IState>{
+  public render (){
+    const { interval } = this.props;
     return(
-      <View style={{flex: .5, flexDirection: 'row'}}>
-        <Text>{this._formatTime()}</Text>
-        <TouchableOpacity onPress={this._startTimer}>
-          <Text>Start</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={this._stopTimer}>
-          <Text>Stop</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={this._resetTimer}>
-          <Text>Reset</Text>
-        </TouchableOpacity>
-      </View>
+      <Text style={styles.timerText}>{this._formatTime(interval)}</Text>
     )
   }
 
-  public _formatTime = () =>{
-    let formattedTime = `${this.state.currentTime/1000}`
-    return formattedTime
-  }
-
-  public _startTimer = () => {
-    this.setState ({
-      interval: setInterval(() => this.setState({currentTime: this.state.currentTime +1}), 1000)
-    })
-  }
-
-  public _stopTimer = () => {
-    clearInterval(this.state.interval)
-  }
- 
-  public _resetTimer = () => {
-    clearInterval(this.state.interval)
-    this.setState({ currentTime: 0 })
+  public _formatTime = (interval: any) =>{
+    const pad = (n: any) => n < 10 ? '0' + n : n;
+    const duration = moment.duration(interval)
+    const centiseconds = Math.floor(duration.milliseconds() / 10)
+    let minutes: any = pad(duration.minutes());
+    let seconds: any = pad(duration.seconds());
+    let milliseconds: any = pad(centiseconds);
+    return  `${minutes}:${seconds}.${milliseconds}`
   }
 }
 
 const styles = StyleSheet.create({
-  button: {
-    backgroundColor: 'yellow',
+  timerText: {
+    fontSize: 90,
   },
 });
