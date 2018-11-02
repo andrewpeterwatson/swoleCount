@@ -17,12 +17,12 @@ export default class ResultsScreen extends React.Component<IProps, IState> {
       <ScrollView style={styles.container}>
         <Text>Rounds {navigation.getParam('round')}</Text>
         <Text>Results</Text>
-        {navigation.getParam('movementList').map(movement => 
+        {/* {navigation.getParam('movementList').map(movement => 
           <View>
             <Text>{movement.movement}X{movement.reps}</Text>
             <Text>{movement.reps * navigation.getParam('round')}</Text>
           </View>
-        )}
+        )} */}
         <Text>.....</Text>
         {console.log('MOVEMENTLIST', navigation.getParam('movementList'))}
       </ScrollView>

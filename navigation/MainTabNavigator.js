@@ -1,14 +1,29 @@
 import React from 'react';
 import { Platform } from 'react-native';
-import { createStackNavigator } from 'react-navigation';
+import { createMaterialTopTabNavigator, createStackNavigator } from 'react-navigation';
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import ResultsScreen from '../screens/ResultsScreen';
+import JournalScreen from '../screens/JournalScreen';
+import ExercisesScreen from '../screens/ExercisesScreen';
+import ResultsScreen from '../screens/ResultsScreen'
 
-const App = createStackNavigator({
-  Home: {screen: HomeScreen},
-  Results: {screen: ResultsScreen}
+
+const App = createMaterialTopTabNavigator({
+  ["Get Swole"]: {screen: HomeScreen},
+  Journal: {screen: JournalScreen},
+  Exercises: {screen: ExercisesScreen},
+  
+}, {
+  tabBarOptions: {
+    activeTintColor: "orange",
+    indicatorStyle: { 
+      backgroundColor: "orange"
+    },
+    style: {
+      backgroundColor: "#505050",
+    }
+  }
 });
 
 // HomeStack.navigationOptions = {
@@ -40,5 +55,7 @@ const App = createStackNavigator({
 // };
 
 export default createStackNavigator({
-  App
+  App: App,
+}, {
+  headerMode: "none"
 });
