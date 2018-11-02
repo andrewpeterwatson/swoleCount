@@ -20,16 +20,10 @@ interface IProps {
   navigation: any
 }
 interface IState {
-<<<<<<< HEAD
     movementList: any;
     currentTime: number;
     pace: number;
     rounds: Array<Object>
-=======
-  currentTime: any,
-  movementList: any,
-  round: number
->>>>>>> 88ae282abba3c5685e1fa8b62b342ec02b19ceb0
 }
 
 export default class HomeScreen extends React.Component<IProps, IState> {
@@ -42,14 +36,9 @@ export default class HomeScreen extends React.Component<IProps, IState> {
 
   state: IState = {
     movementList: [],
-<<<<<<< HEAD
     currentTime: 0,
     rounds: [],
     pace: 0,
-=======
-    round: 0,
-    currentTime: 0,
->>>>>>> 88ae282abba3c5685e1fa8b62b342ec02b19ceb0
   }
 
   _addMovement = (movement: string, reps: number) => this.setState({ 
