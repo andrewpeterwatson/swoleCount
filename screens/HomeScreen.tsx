@@ -11,12 +11,12 @@ import {
 import colors from '../constants/Colors'
 import { WebBrowser } from 'expo';
 import { Footer } from 'native-base';
+import Images  from '../assets/images';
 
-import { TimerMain } from '../components/timerMain';
-
-import { Movements } from '../components/movements'
-import { Splits } from '../components/splits'
-import AddRound from '../components/AddRound'
+// import { TimerMain } from '../components/timerMain';
+// import { Movements } from '../components/movements'
+// import { Splits } from '../components/splits'
+// import AddRound from '../components/AddRound'
 
 interface IProps {
   navigation: any
@@ -36,80 +36,70 @@ export default class HomeScreen extends React.Component<IProps, IState> {
     header: null,
   };
 
-  state: IState = {
-    movementList: [],
-    currentTime: 0,
-    rounds: [],
-    pace: 0,
-  }
+  // state: IState = {
+  //   movementList: [],
+  //   currentTime: 0,
+  //   rounds: [],
+  //   pace: 0,
+  // }
 
-  _addMovement = (movement: string, reps: number) => this.setState({ 
-      movementList:  
-      [ 
-          { movement, reps }, 
-          ...this.state.movementList 
-      ],
-  })
+  // _addMovement = (movement: string, reps: number) => this.setState({ 
+  //     movementList:  
+  //     [ 
+  //         { movement, reps }, 
+  //         ...this.state.movementList 
+  //     ],
+  // })
 
-  _handleUpdateRound = () => {
-    let newTime = this.state.currentTime + 1.23
-    let rounds = this.state.rounds
-    const newRound =  {
-      round: this.state.rounds.length + 1, 
-      time: newTime,
-    }
-    rounds.unshift(newRound)
-    this._getPace(rounds, newTime)
-    this.setState({ 
-      rounds,
-      currentTime: newTime
-    })
-  }
+  // _handleUpdateRound = () => {
+  //   let newTime = this.state.currentTime + 1.23
+  //   let rounds = this.state.rounds
+  //   const newRound =  {
+  //     round: this.state.rounds.length + 1, 
+  //     time: newTime,
+  //   }
+  //   rounds.unshift(newRound)
+  //   this._getPace(rounds, newTime)
+  //   this.setState({ 
+  //     rounds,
+  //     currentTime: newTime
+  //   })
+  //}
 
 
-  _getPace = (rounds: Array<Object>, currentTime: number) => {
-    const pace = currentTime / rounds.length
-    this.setState({ pace })
-    console.log('PACECCEEE', pace, currentTime, rounds.length)
-}
+//   _getPace = (rounds: Array<Object>, currentTime: number) => {
+//     const pace = currentTime / rounds.length
+//     this.setState({ pace })
+//     console.log('PACECCEEE', pace, currentTime, rounds.length)
+// }
 
-  _handleFinishPress = () => {
-    console.log('ROUNDS AND REPS', this.state.rounds, this.state.movementList)
-    this.props.navigation.navigate('Results', {
-      time: this.state.currentTime,
-      rounds: this.state.rounds,
-      movementList: this.state.movementList,
-    })
-    // this.setState({ currentTime: newTime })
-  }
+  // _handleFinishPress = () => {
+  //   console.log('ROUNDS AND REPS', this.state.rounds, this.state.movementList)
+  //   this.props.navigation.navigate('Results', {
+  //     time: this.state.currentTime,
+  //     rounds: this.state.rounds,
+  //     movementList: this.state.movementList,
+  //   })
+  //   // this.setState({ currentTime: newTime })
+  // }
 
   public render() {
-    console.log('rounds', this.state.rounds )
+   // console.log('rounds', this.state.rounds )
     return (
       <View style={styles.container}>
-         <TimerMain 
-          currentTime={this.state.currentTime}
-          _handleCurrentTime={this._handleCurrentTime}
+          <Image 
+            source={Images.graph} 
         />
-        <View style={styles.scrollStyle}>
-          <ScrollView>
-            <Movements 
-              movementList={this.state.movementList}
-              _addMovement={this._addMovement}
-            />
-            <Splits 
-              pace={this.state.pace}
-              currentTime={this.state.currentTime}
-              rounds={this.state.rounds}
-            />
-          </ScrollView>
-        </View>
-       
-        <AddRound
-          rounds={this.state.rounds}
-          _handleUpdateRound={this._handleUpdateRound}
-          _handleFinishPress={this._handleFinishPress}
-        />
+        	<View style={styles.container}>
+						<TouchableOpacity 
+              style={styles.swoleBtn}
+              onPress={()=> this.props.navigation.navigate('Workouts')}
+						>
+              <Text style={{ color: '#fff', fontSize: 30, textAlign: 'center' }}>
+                GET SWOLE 
+              </Text>
+						</TouchableOpacity>
+				</View>
         <Footer style={{ height: 75, backgroundColor: colors.secondary_dark, borderBottomWidth: 0 }}>
           <View style={{ 
             flex: 1, 
@@ -133,11 +123,11 @@ export default class HomeScreen extends React.Component<IProps, IState> {
     );
   }  
 
-  public _handleCurrentTime = (currentTime: any) =>{
-    this.setState({
-      currentTime
-    })
-  };
+  // public _handleCurrentTime = (currentTime: any) =>{
+  //   this.setState({
+  //     currentTime
+  //   })
+  // };
 }
 
 const styles = StyleSheet.create({
@@ -175,4 +165,14 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#2e78b7',
   },
+  swoleBtn: {
+		width: 150,
+		height: 150,
+		marginTop: 20,
+		display: 'flex',
+		alignItems: 'center',
+		justifyContent: 'center',
+		borderRadius: 100,
+		backgroundColor: 'orange'
+	}
 });

@@ -2,15 +2,15 @@ import React from 'react';
 import { Platform } from 'react-native';
 import { createMaterialTopTabNavigator, createStackNavigator } from 'react-navigation';
 
-import TabBarIcon from '../components/TabBarIcon';
 import MainScreen from '../screens/HomeScreen';
+import TabBarIcon from '../components/TabBarIcon';
 import JournalScreen from '../screens/JournalScreen';
 import ExercisesScreen from '../screens/ExercisesScreen';
-import ResultsScreen from '../screens/ResultsScreen'
-
+import ResultsScreen from '../screens/ResultsScreen';
+import WorkoutsScreen from '../screens/WorkoutsScreen';
 
 const App = createMaterialTopTabNavigator({
-  ["Get Swole"]:{screen: MainScreen},
+  ["Get Swole"]: {screen: MainScreen},
   Journal: {screen: JournalScreen},
   Exercises: {screen: ExercisesScreen},
   
