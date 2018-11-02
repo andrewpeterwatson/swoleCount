@@ -28,34 +28,6 @@ const App = createMaterialTopTabNavigator({
   }
 });
 
-// HomeStack.navigationOptions = {
-//   tabBarLabel: 'Home',
-//   tabBarIcon: ({ focused }) => (
-//     <TabBarIcon
-//       focused={focused}
-//       name={
-//         Platform.OS === 'ios'
-//           ? `ios-information-circle${focused ? '' : '-outline'}`
-//           : 'md-information-circle'
-//       }
-//     />
-//   ),
-// };
-
-// const ResultsStack = createStackNavigator({
-//   Results: ResultsScreen,
-// });
-
-// ResultsStack.navigationOptions = {
-//   tabBarLabel: 'Results',
-//   tabBarIcon: ({ focused }) => (
-//     <TabBarIcon
-//       focused={focused}
-//       name={Platform.OS === 'ios' ? `ios-link${focused ? '' : '-outline'}` : 'md-link'}
-//     />
-//   ),
-// };
-
 export default createStackNavigator({
   App: App,
 }, {
