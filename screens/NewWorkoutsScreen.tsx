@@ -7,15 +7,15 @@ import {
     Container,
 } from 'native-base';
 
-class MyWorkouts extends React.Component {
+class NewWorkouts extends React.Component {
 
     render() {
         return (
             <View>
-                <Text>ITS SWOLE MY</Text>
+                <Text>ITS SWOLE NEW</Text>
             </View>
         )
     }
 }
 
-export default MyWorkouts
+export default NewWorkouts
