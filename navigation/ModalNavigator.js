@@ -1,8 +1,9 @@
-import { createSwitchNavigator } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation';
 import SwoleNavigator from './SwoleTabNavigator'
 
-export default AddStack = createSwitchNavigator({
+export default AddStack = createStackNavigator({
   Workouts: SwoleNavigator
 },{
-  mode: "modal"
+  mode: "modal",
+  headerMode: 'none',
 });

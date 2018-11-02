@@ -27,7 +27,7 @@ interface IState {
     rounds: Array<Object>
 }
 
-export default class SwoleScreen extends React.Component<IProps, IState> {
+export default class HomeScreen extends React.Component<IProps, IState> {
   constructor(props: any) {
     super(props)
   }
@@ -109,15 +109,15 @@ export default class SwoleScreen extends React.Component<IProps, IState> {
           _handleUpdateRound={this._handleUpdateRound}
           _handleFinishPress={this._handleFinishPress}
         />
-        <Footer>
-          <View style={{ flex: 1, flexDirection: "row", justifyContent: "space-around", alignItems: "center"}}>
-            <TouchableOpacity>
+        <Footer style={{ height: 75 }}>
+          <View style={{ flex: 1, marginTop: 20, flexDirection: "row", justifyContent: "space-around", alignItems: "flex-start"}}>
+            <TouchableOpacity onPress={() =>this.props.navigation.navigate('My Workouts')}>
               <Text>My Workouts</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() =>this.props.navigation.navigate('NewWorkouts')}>
+            <TouchableOpacity onPress={() =>this.props.navigation.navigate('New')}>
               <Text>New</Text>
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() =>this.props.navigation.navigate('Recommended')}>
               <Text>Recommended</Text>
             </TouchableOpacity>
           </View>

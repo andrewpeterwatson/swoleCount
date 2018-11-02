@@ -8,6 +8,20 @@ import {
 } from 'native-base';
 
 class NewWorkouts extends React.Component {
+    static navigationOptions = () => {
+        return {
+          headerStyle: {
+            backgroundColor: '#FFF',
+            borderBottomColor: '#FFF',
+          },
+          headerLeft: (
+            <Text>GET OUT</Text>
+          ),
+          headerRight: ( 
+            <Text>STAY HERE</Text>
+          )
+        }
+      };
 
     render() {
         return (
