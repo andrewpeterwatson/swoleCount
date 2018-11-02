@@ -111,10 +111,10 @@ export default class SwoleScreen extends React.Component<IProps, IState> {
         />
         <Footer>
           <View style={{ flex: 1, flexDirection: "row", justifyContent: "space-around", alignItems: "center"}}>
-            <TouchableOpacity onPress={() =>this.props.navigation.navigate("MyWorkouts")}>
+            <TouchableOpacity>
               <Text>My Workouts</Text>
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() =>this.props.navigation.navigate('NewWorkouts')}>
               <Text>New</Text>
             </TouchableOpacity>
             <TouchableOpacity>
