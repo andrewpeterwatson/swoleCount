@@ -7,6 +7,7 @@ interface IProps {
 interface IState {}
 
 export default class WorkoutsScreen extends React.Component<IProps, IState> {
+  
   render() {
     const { navigation } = this.props
     return (

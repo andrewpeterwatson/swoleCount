@@ -1,7 +1,7 @@
 import { createMaterialTopTabNavigator, createStackNavigator } from 'react-navigation';
-import MyWorkouts from '../screens/MyWorkoutsScreen'
-import NewWorkouts from '../screens/NewWorkoutsScreen'
-import RecWorkouts from '../screens/RecWorkoutsScreen'
+import MyWorkouts from '../screens/workouts/workouts_myWorkouts'
+import NewWorkouts from '../screens/workouts/workouts_new'
+import RecWorkouts from '../screens/workouts/workouts_rec'
 
 
 export default AddStack = createMaterialTopTabNavigator({
