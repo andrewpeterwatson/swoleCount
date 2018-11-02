@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import colors from '../constants/Colors'
 import { WebBrowser } from 'expo';
 import { Footer } from 'native-base';
 import Images  from '../assets/images';
@@ -99,16 +100,22 @@ export default class HomeScreen extends React.Component<IProps, IState> {
               </Text>
 						</TouchableOpacity>
 				</View>
-        <Footer style={{ height: 75 }}>
-          <View style={{ flex: 1, marginTop: 20, flexDirection: "row", justifyContent: "space-around", alignItems: "flex-start"}}>
+        <Footer style={{ height: 75, backgroundColor: colors.secondary_dark, borderBottomWidth: 0 }}>
+          <View style={{ 
+            flex: 1, 
+            marginTop: 20, 
+            flexDirection: "row", 
+            justifyContent: "space-around", 
+            alignItems: "flex-start",
+            }}>
             <TouchableOpacity onPress={() =>this.props.navigation.navigate('My Workouts')}>
-              <Text>My Workouts</Text>
+              <Text style={{ color: colors.text_light }}>My Workouts</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() =>this.props.navigation.navigate('New')}>
-              <Text>New</Text>
+              <Text style={{ color: colors.text_light }}>New</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() =>this.props.navigation.navigate('Recommended')}>
-              <Text>Recommended</Text>
+              <Text style={{ color: colors.text_light }}>Recommended</Text>
             </TouchableOpacity>
           </View>
         </Footer>
