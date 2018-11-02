@@ -8,9 +8,13 @@ import {
 } from 'react-native'
 
 interface IProps {
-    round: number,
+    rounds: Array<Object>,
     _handleFinishPress: any,
-    _handleUpdateRound: any
+    _handleUpdateRound: any,
+}
+
+interface rounds {
+    round: number
 }
 
 interface IState {
@@ -21,7 +25,8 @@ class AddRound extends React.Component<IProps, IState> {
 
     render() { 
         // const { currentRound } = this.state
-        const { round, _handleFinishPress, _handleUpdateRound } = this.props
+        const { rounds, _handleFinishPress, _handleUpdateRound } = this.props
+        console.log('rounds from add', rounds)
         return (
             <View style={styles.container}>
                 <TouchableOpacity 
@@ -29,7 +34,7 @@ class AddRound extends React.Component<IProps, IState> {
                 onPress={() => _handleUpdateRound()}
                 >
                     <Text style={{ color: '#fff', fontSize: 30, textAlign: 'center' }}>
-                        {round === 0 ? 'GET SWOLE' : round}
+                        {rounds.length === 0 ? 'GET SWOLE' : rounds[0].round}
                     </Text>
                 </TouchableOpacity>
                 <Button title='finish workout' onPress={() => _handleFinishPress()}>
@@ -49,6 +54,7 @@ const styles = StyleSheet.create({
     swoleBtn: {
         width: 150,
         height: 150,
+        marginTop: 20,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',

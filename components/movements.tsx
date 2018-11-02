@@ -42,7 +42,7 @@ export class Movements extends React.Component<IProps, IState> {
         const { movementList, _addMovement } = this.props
         console.log('isCollapsed', this.state.isCollapsed)
         return (
-            <View style={{ flex: 1}}>
+            <View style={{ width: '100%', height: 'auto' }}>
                 <TouchableOpacity 
                     style={[styles.drawerContainer, this.state.isCollapsed && styles.bottomLine]} 
                     onPress={() => this.setState({ isCollapsed: (!this.state.isCollapsed ? true : false) })}
