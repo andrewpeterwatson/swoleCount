@@ -5,7 +5,9 @@ import {
 } from 'react-native';
 import {
     Container,
+    Content,
 } from 'native-base';
+import colors from '../../constants/Colors'
 
 class NewWorkouts extends React.Component {
     static navigationOptions = () => {
@@ -25,9 +27,11 @@ class NewWorkouts extends React.Component {
 
     render() {
         return (
-            <View>
-                <Text>ITS SWOLE NEW</Text>
-            </View>
+            <Container>
+                <Content style={{ backgroundColor: colors.secondary_dark }}>
+                    <Text>ITS SWOLE NEW</Text>
+                </Content>
+            </Container>
         )
     }
 }

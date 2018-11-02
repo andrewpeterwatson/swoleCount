@@ -2,6 +2,7 @@ import { createMaterialTopTabNavigator, createStackNavigator } from 'react-navig
 import MyWorkouts from '../screens/workouts/workouts_myWorkouts'
 import NewWorkouts from '../screens/workouts/workouts_new'
 import RecWorkouts from '../screens/workouts/workouts_rec'
+import colors from '../constants/Colors'
 
 
 export default AddStack = createMaterialTopTabNavigator({
@@ -16,7 +17,7 @@ export default AddStack = createMaterialTopTabNavigator({
         backgroundColor: "orange"
       },
       style: {
-        backgroundColor: "#505050",
+        backgroundColor: colors.secondary_dark,
         height: 150,
         justifyContent: "flex-end"
       },
