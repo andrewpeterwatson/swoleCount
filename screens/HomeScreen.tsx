@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { WebBrowser } from 'expo';
 
-import { Timer } from '../components/timer';
+import { TimerMain } from '../components/timerMain';
 
 import { Movements } from '../components/movements'
 import { Splits } from '../components/splits'
@@ -20,10 +20,16 @@ interface IProps {
   navigation: any
 }
 interface IState {
+<<<<<<< HEAD
     movementList: any;
     currentTime: number;
     pace: number;
     rounds: Array<Object>
+=======
+  currentTime: any,
+  movementList: any,
+  round: number
+>>>>>>> 88ae282abba3c5685e1fa8b62b342ec02b19ceb0
 }
 
 export default class HomeScreen extends React.Component<IProps, IState> {
@@ -36,9 +42,14 @@ export default class HomeScreen extends React.Component<IProps, IState> {
 
   state: IState = {
     movementList: [],
+<<<<<<< HEAD
     currentTime: 0,
     rounds: [],
     pace: 0,
+=======
+    round: 0,
+    currentTime: 0,
+>>>>>>> 88ae282abba3c5685e1fa8b62b342ec02b19ceb0
   }
 
   _addMovement = (movement: string, reps: number) => this.setState({ 
@@ -85,8 +96,10 @@ export default class HomeScreen extends React.Component<IProps, IState> {
     console.log('rounds', this.state.rounds )
     return (
       <View style={styles.container}>
-        {/* <Timer /> */}
-        <View style={{ flex: .5 }} />
+         <TimerMain 
+          currentTime={this.state.currentTime}
+          _handleCurrentTime={this._handleCurrentTime}
+        />
         <View style={styles.scrollStyle}>
           <ScrollView>
             <Movements 
@@ -100,6 +113,7 @@ export default class HomeScreen extends React.Component<IProps, IState> {
             />
           </ScrollView>
         </View>
+       
         <AddRound
           rounds={this.state.rounds}
           _handleUpdateRound={this._handleUpdateRound}
@@ -140,6 +154,12 @@ export default class HomeScreen extends React.Component<IProps, IState> {
     WebBrowser.openBrowserAsync(
       'https://docs.expo.io/versions/latest/guides/up-and-running.html#can-t-see-your-changes'
     );
+  };
+
+  public _handleCurrentTime = (currentTime: any) =>{
+    this.setState({
+      currentTime
+    })
   };
 }
 
