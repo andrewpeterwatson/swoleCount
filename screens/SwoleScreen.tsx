@@ -9,6 +9,7 @@ import {
   View,
 } from 'react-native';
 import { WebBrowser } from 'expo';
+import { Footer } from 'native-base';
 
 import { TimerMain } from '../components/timerMain';
 
@@ -24,7 +25,7 @@ interface IState {
   round: number
 }
 
-export default class HomeScreen extends React.Component<IProps, IState> {
+export default class SwoleScreen extends React.Component<IProps, IState> {
   constructor(props: any) {
     super(props)
   }
@@ -73,42 +74,22 @@ export default class HomeScreen extends React.Component<IProps, IState> {
           _handleUpdateRound={this._handleUpdateRound}
           _handleFinishPress={this._handleFinishPress}
         />
+        <Footer>
+          <View style={{ flex: 1, flexDirection: "row", justifyContent: "space-around", alignItems: "center"}}>
+            <TouchableOpacity onPress={() =>this.props.navigation.navigate("MyWorkouts")}>
+              <Text>My Workouts</Text>
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Text>New</Text>
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Text>Recommended</Text>
+            </TouchableOpacity>
+          </View>
+        </Footer>
       </View>
     );
-  }
-
-  public _maybeRenderDevelopmentModeWarning() {
-    if (__DEV__) {
-      const learnMoreButton = (
-        <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
-          Learn more
-        </Text>
-      );
-
-      return (
-        <Text style={styles.developmentModeText}>
-          Development mode is enabled, your app will be slower but you can use useful development
-          tools. {learnMoreButton}
-        </Text>
-      );
-    } else {
-      return (
-        <Text style={styles.developmentModeText}>
-          You are not in development mode, your app will run at full speed.
-        </Text>
-      );
-    }
-  }
-
-  public _handleLearnMorePress = () => {
-    WebBrowser.openBrowserAsync('https://docs.expo.io/versions/latest/guides/development-mode');
-  };
-
-  public _handleHelpPress = () => {
-    WebBrowser.openBrowserAsync(
-      'https://docs.expo.io/versions/latest/guides/up-and-running.html#can-t-see-your-changes'
-    );
-  };
+  }  
 
   public _handleCurrentTime = (currentTime: any) =>{
     this.setState({

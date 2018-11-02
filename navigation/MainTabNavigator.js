@@ -3,14 +3,14 @@ import { Platform } from 'react-native';
 import { createMaterialTopTabNavigator, createStackNavigator } from 'react-navigation';
 
 import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
+import SwoleScreen from '../screens/SwoleScreen';
 import JournalScreen from '../screens/JournalScreen';
 import ExercisesScreen from '../screens/ExercisesScreen';
 import ResultsScreen from '../screens/ResultsScreen'
 
 
 const App = createMaterialTopTabNavigator({
-  ["Get Swole"]: {screen: HomeScreen},
+  ["Get Swole"]:{screen: SwoleScreen},
   Journal: {screen: JournalScreen},
   Exercises: {screen: ExercisesScreen},
   
@@ -22,6 +22,8 @@ const App = createMaterialTopTabNavigator({
     },
     style: {
       backgroundColor: "#505050",
+      height: 100,
+      justifyContent: "flex-end"
     }
   }
 });
@@ -57,5 +59,6 @@ const App = createMaterialTopTabNavigator({
 export default createStackNavigator({
   App: App,
 }, {
-  headerMode: "none"
+  headerMode: "none",
+  mode: "modal"
 });
